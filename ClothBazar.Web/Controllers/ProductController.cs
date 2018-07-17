@@ -30,7 +30,6 @@ namespace ClothBazar.Web.Controllers
             return PartialView(products);
         }
 
-
         [HttpGet]
         public ActionResult Create()
         {
@@ -45,5 +44,29 @@ namespace ClothBazar.Web.Controllers
             return RedirectToAction("ProductTable");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int ID)
+        {
+            var product = productsService.GetProduct(ID);
+
+            return PartialView(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productsService.UpdateProduct(product);
+
+            return RedirectToAction("ProductTable");
+        }
+
+
+        [HttpPost]
+        public ActionResult Delete(int ID)
+        {
+            productsService.DeleteProduct(ID);
+
+            return RedirectToAction("ProductTable");
+        }
     }
 }

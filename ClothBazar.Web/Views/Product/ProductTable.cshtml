@@ -29,8 +29,8 @@
 					<td>-</td>
 					<td>@product.Price</td>
 					<td>
-						<button>Edit</button>
-						<button>Delete</button>
+						<button class="editBtn" data-id="@product.ID">Edit</button>
+						<button class="deleteBtn" data-id="@product.ID">Delete</button>
 					</td>
 				</tr>
 			}
@@ -54,5 +54,54 @@
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
         	alert("FAIL");
         });
+	});
+
+	$("#newBtn").click(function () {		
+		$.ajax({
+			url: '/Product/Create',			
+		})
+        .done(function (response) {
+        	$("#actionContainer").html(response);
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$(".editBtn").click(function () {
+		$.ajax({
+			url: '/Product/Edit',
+			data: {
+				ID: $(this).attr('data-id')
+			}
+		})
+        .done(function (response) {
+        	$("#actionContainer").html(response);
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$(".deleteBtn").click(function () {
+
+		var confirmDelete = confirm("Are you sure you want to delete this product?");
+
+		if (confirmDelete)
+		{
+			$.ajax({
+				type: 'POST',
+				url: '/Product/Delete',
+				data: {
+					ID: $(this).attr('data-id')
+				}
+			})
+			.done(function (response) {
+				$("#tableContiner").html(response);
+			})
+			.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("FAIL");
+			});
+		}
 	});
 </script>

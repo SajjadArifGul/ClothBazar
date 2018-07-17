@@ -1,0 +1,120 @@
+/* Color
+---------------------------------------------------------------*/
+#mainnav > ul >li.active > a,
+#mainnav > ul >li > a:hover,
+a:hover, a:focus,
+.flat-icon-box.style-1 .icon-wrap,
+article .more-link a,
+article .more-link a:after,
+.widget.widget-link ul li a:hover,
+.post-wrap.style3 article .title-post:hover h2 a, .post-wrap.style3 article .meta-post li:hover a,
+.flat-social li a:hover,
+.footer-bottom .copyright a:hover,
+#top-bar .top-bar-nav ul.sub-language li > a:hover, #top-bar a:hover,
+#top-bar .top-bar-nav ul.sub-language li > a:hover, #top-bar a:hover,
+.owl-theme .owl-nav [class*="owl-"],
+.countdown.style-1 .square .numb,
+.post-wrap.style4 article .meta-post li a:hover,
+.flat-filter.style-2 li.active a, .flat-filter.style-2 li a:hover,
+.filter-shop.icon-right li.filter-list.active:before,
+.themesflat-button.outline.ol-accent,
+.themesflat-button.bg-transparent:hover,
+.flat-filter.style-3 li.active a ,
+.product .product-item .price ins,
+.filter-shop ul.flat-filter-search li.search-product.active:after,
+.breadcrumbs ul li a:hover,
+.product-detail .box-like a:hover,
+.product-detail .product-categories a:hover, .product-detail .product-tags a:hover,
+.flat-socials li a:hover,
+.comment-respond .comment-form-notify input[type="checkbox"]:checked +label:before,
+.flat-button button.bg-white,
+.wrap-error .content-error a,
+.widget.widget-news-latest ul li h6 a:hover,
+.direction .tags a:hover, .direction .social-icon ul li a:hover,
+.direction ul.next-pre li .btn-default a,
+.comments-area ol.comment-list article .reply a.comment-reply-link,
+.comments-area ol.comment-list article .reply a:hover,
+.iconbox .box-header .icon i,
+#mainnav-mobi ul li.active > a,
+.flat-filter.style-1 li a:hover,
+.menu-extra li a:hover,
+#mainnav-mobi ul li a:hover ,
+.slidebar-shop .widget.widget-size li.checkbox input[type="checkbox"]:checked +label:before {
+	color: #7cc576;
+}
+
+.text-accent {
+	color: #7cc576 !important;
+}
+
+/* Background color
+---------------------------------------------------------------*/
+#mainnav ul.submenu:before,
+.menu-extra li a span,
+.themesflat-button.bg-accent,
+.themesflat-button:hover,
+.title-section .title:before,
+.product .product-item .add-to-cart,
+.flat-filter.style-1 li.active a,
+.post-wrap.style3 article .more-link a:before,
+button, input[type="button"], input[type="reset"], input[type="submit"],
+.go-top,
+.box-filter.slidebar-shop .btn-close,
+.widget.widget_tag .tag-list a.active, .widget.widget_tag .tag-list a:hover,
+.themesflat-button.outline.ol-accent:hover,
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot  span:hover,
+.product.style4 .product-item .add-to-cart:hover,
+.flat-pagination li.active a, .flat-pagination li a:hover,
+.product-detail .add-to-cart a,
+.direction ul.next-pre li .btn-default a:hover,
+.switcher-container h2 a,
+.mobile-button:before, .mobile-button:after, .mobile-button span,
+.widget.widget-price .ui-state-default, .widget.widget-price .ui-widget-content .ui-state-default,
+.widget.widget-price .ui-widget-header .ui-state-default, 
+.widget.widget-price .ui-button, html .ui-button.ui-state-disabled:hover, 
+.widget.widget-price html .ui-button.ui-state-disabled:active,
+.flat-icon-box.w55 .icon-wrap:before,
+.tp-bullets.custom .tp-bullet.selected {
+	background-color: #7cc576;
+}
+
+.overlay-effect.bg-color-2 {
+	background-color: rgba(124, 197, 118, 0.1);
+}
+
+/* Border color
+---------------------------------------------------------------*/
+.flat-filter.style-1 li.active a,
+.themesflat-button.outline.ol-accent,
+.flat-pagination li.active a, .flat-pagination li a:hover,
+.product-detail .box-like a:hover ,
+.direction ul.next-pre li .btn-default a,
+.widget.widget-price .ui-state-default, .widget.widget-price .ui-widget-content .ui-state-default,
+.widget.widget-price .ui-widget-header .ui-state-default, 
+.widget.widget-price .ui-button, html .ui-button.ui-state-disabled:hover, 
+.widget.widget-price html .ui-button.ui-state-disabled:active{
+	border-color: #7cc576;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus {
+	border: 1px solid #7cc576;
+}
+
+.shop-search .search-form input[type="search"]:focus,
+.wrap-contact.style2 input[type="text"]:focus, .wrap-contact.style2 input[type="email"]:focus, .wrap-contact.style2 textarea:focus {
+	border-bottom-color: #7cc576;
+}
