@@ -1,41 +1,52 @@
 ﻿
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
+
+	var imageURL =  "/Content/images/system/placeholder-image.png";
 }
 
 <h2>Create Category</h2>
 
-<form method="post">
-	<label>Name</label>
-	<input name="Name" />
-
-	<br />
-
-	<label>Description</label>
-	<input name="Description" />
-
-	<br />
-
-	<label>Image</label>
-	<input id="ImageURL" name="ImageURL" type="hidden" />
-	<input id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
-	
-	<div class="thumb">
-		<img id="categoryImage" />		
+<form id="createCategory">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="form-group">
+				<label>Name</label>
+				<input class="form-control" name="Name" />
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<input class="form-control" name="Description" />
+			</div>
+			<div class="form-group">
+				<label>Image</label>
+				<input type="hidden" id="ImageURL" name="ImageURL" />
+				<input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+			</div>
+			<div class="form-group">
+				<label>Is Featured?</label>
+				<div class="input-group">
+					<div class="radio form-control">
+						<label><input name="isFeatured" type="radio" value="True" /> True</label>
+					</div>
+					<div class="radio form-control">
+						<label><input name="isFeatured" type="radio" value="False" /> False</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumb">
+				<img class="img-thumbnail img-fluid" id="categoryImage" src="@imageURL" />
+			</div>
+		</div>
 	</div>
-	<br />
-
-	<label>Is Featured?</label>
-	<input name="isFeatured" type="radio" value="True" /> True
-	<input name="isFeatured" type="radio" value="False"/> False
-
-	<br />
-	<button type="submit">Save</button>
+	
+	<button id="saveBtn" type="button" class="btn btn-primary">Save</button>
 </form>
 
 <script>
 	$("#imageUpload").change(function () {
-		debugger;
 		var element = this;
 
 		var formData = new FormData();
@@ -56,7 +67,6 @@
 			processData: false
 		})
         .done(function (response) {
-        	debugger;
         	console.log(response);
 
         	if(response.Success)
@@ -67,7 +77,22 @@
         })
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
         	alert("FAIL");
+        });		
+	});
+
+	$("#saveBtn").click(function () {
+		$.ajax({
+			type: 'POST',
+			url: '/Category/Create',
+			data: $("#createCategory").serialize()
+		})
+        .done(function (response) {
+        	$("#tableContiner").html(response);
+        	$("#actionContainer").html("");
+
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
         });
-		
 	});
 </script>

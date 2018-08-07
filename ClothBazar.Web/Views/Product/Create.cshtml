@@ -1,4 +1,4 @@
-﻿@model List<Category>
+﻿@model NewProductViewModel
 @{
 	ViewBag.Title = "Create";
 }
@@ -9,7 +9,7 @@
 	<div class="form-group">
 		<label>Category</label>
 		<select class="form-control" name="CategoryID">
-			@foreach (var category in Model)
+			@foreach (var category in Model.AvailableCategories)
 			{
 				<option value="@category.ID">@category.Name</option>
 			}
@@ -17,7 +17,7 @@
 	</div>
 	<div class="form-group">
 		<label>Name</label>
-		<input class="form-control"  name="Name" />
+		<input class="form-control" name="Name" />
 	</div>
 	<div class="form-group">
 		<label>Description</label>

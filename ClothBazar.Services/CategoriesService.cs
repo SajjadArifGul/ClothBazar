@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ClothBazar.Services
 {
@@ -23,7 +24,7 @@ namespace ClothBazar.Services
         {
             using (var context = new CBContext())
             {
-                return context.Categories.ToList();
+                return context.Categories.Include(x=>x.Products).ToList();
             }
         }
 
