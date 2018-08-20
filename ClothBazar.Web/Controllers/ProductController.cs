@@ -69,6 +69,7 @@ namespace ClothBazar.Web.Controllers
             newProduct.Description = model.Description;
             newProduct.Price = model.Price;
             newProduct.Category = CategoriesService.Instance.GetCategory(model.CategoryID);
+            newProduct.ImageURL = model.ImageURL;
 
             ProductsService.Instance.SaveProduct(newProduct);
 
@@ -87,6 +88,7 @@ namespace ClothBazar.Web.Controllers
             model.Description = product.Description;
             model.Price = product.Price;
             model.CategoryID = product.Category != null ? product.Category.ID : 0;
+            model.ImageURL = product.ImageURL;
 
             model.AvailableCategories = CategoriesService.Instance.GetCategories();
 
@@ -101,6 +103,7 @@ namespace ClothBazar.Web.Controllers
             existingProduct.Description = model.Description;
             existingProduct.Price = model.Price;
             existingProduct.Category = CategoriesService.Instance.GetCategory(model.CategoryID);
+            existingProduct.ImageURL = model.ImageURL;
 
             ProductsService.Instance.UpdateProduct(existingProduct);
 
