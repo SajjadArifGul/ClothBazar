@@ -47,10 +47,8 @@
 		</div>
 	</div>
 
-
-	
-
 	<button id="updateBtn" type="button" class="btn btn-primary">Update</button>
+	<button id="cancelBtn" type="button" class="btn btn-primary">Cancel</button>
 </form>
 
 <script>
@@ -97,9 +95,15 @@
         .done(function (response) {
         	$("#tableContiner").html(response);
         	$("#actionContainer").html("");
+        	focusAction("tableContiner");
         })
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
         	alert("FAIL");
         });
+	});
+
+	$("#cancelBtn").click(function () {
+		$("#actionContainer").html("");
+        focusAction("tableContiner");
 	});
 </script>
