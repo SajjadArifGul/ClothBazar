@@ -11,9 +11,6 @@ namespace ClothBazar.Web.Controllers
 {
     public class ProductController : Controller
     {
-        //ProductsService productsService = new ProductsService();
-        CategoriesService categoryService = new CategoriesService();
-
         // GET: Product
         public ActionResult Index()
         {
@@ -59,7 +56,7 @@ namespace ClothBazar.Web.Controllers
         {
             NewProductViewModel model = new NewProductViewModel();
             
-            model.AvailableCategories = categoryService.GetCategories();
+            model.AvailableCategories = CategoriesService.Instance.GetCategories();
             
             return PartialView(model);
         }
@@ -71,7 +68,7 @@ namespace ClothBazar.Web.Controllers
             newProduct.Name = model.Name;
             newProduct.Description = model.Description;
             newProduct.Price = model.Price;
-            newProduct.Category = categoryService.GetCategory(model.CategoryID);
+            newProduct.Category = CategoriesService.Instance.GetCategory(model.CategoryID);
 
             ProductsService.Instance.SaveProduct(newProduct);
 
@@ -91,7 +88,7 @@ namespace ClothBazar.Web.Controllers
             model.Price = product.Price;
             model.CategoryID = product.Category != null ? product.Category.ID : 0;
 
-            model.AvailableCategories = categoryService.GetCategories();
+            model.AvailableCategories = CategoriesService.Instance.GetCategories();
 
             return PartialView(model);
         }
@@ -103,7 +100,7 @@ namespace ClothBazar.Web.Controllers
             existingProduct.Name = model.Name;
             existingProduct.Description = model.Description;
             existingProduct.Price = model.Price;
-            existingProduct.Category = categoryService.GetCategory(model.CategoryID);
+            existingProduct.Category = CategoriesService.Instance.GetCategory(model.CategoryID);
 
             ProductsService.Instance.UpdateProduct(existingProduct);
 

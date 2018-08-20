@@ -10,18 +10,21 @@ namespace ClothBazar.Services
 {
     public class ConfigurationsService
     {
-        //public static ConfigurationsService ClassObject {
-        //    get {
-        //        if (privateInMemoryObject == null) privateInMemoryObject = new ConfigurationsService();
+        #region Singleton
+        public static ConfigurationsService Instance
+        {
+            get
+            {
+                if (instance == null) instance = new ConfigurationsService();
 
-        //        return privateInMemoryObject;
-        //    }
-        //}
-        //private static ConfigurationsService privateInMemoryObject { get; set; }
-        
-        //private ConfigurationsService()
-        //{   
-        //}
+                return instance;
+            }
+        }
+        private static ConfigurationsService instance { get; set; }
+        private ConfigurationsService()
+        {
+        }
+        #endregion
 
         public Config GetConfig(string Key)
         {
