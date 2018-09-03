@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<div class="form-group">
-				<label>Name</label>
+				<label>Name <span class="text-danger">*</span></label>
 				<input class="form-control" name="Name" />
 			</div>
 			<div class="form-group">
@@ -80,20 +80,61 @@
         });
 	});
 
+	$('#createCategory').validate({
+		rules: {
+			Name: {
+				required: true,
+				minlength: 5,
+				maxlength: 50,
+			},
+			Description: {
+				maxlength: 500				
+			}
+		},
+		messages: {
+			Name: {
+				required: 'Name is required',
+				minlength: 'Minimum Length is 5',
+				maxlength: 'Maximum Length is 50'
+			},
+			Description: {
+				maxlength: 'Maximum Length is 500'
+			}
+		}
+	});
+
 	$("#saveBtn").click(function () {
-		$.ajax({
-			type: 'POST',
-			url: '@Url.Action("Create", "Category")',
-			data: $("#createCategory").serialize()
-		})
-        .done(function (response) {
-        	$("#tableContiner").html(response);
-        	$("#actionContainer").html("");
-        	focusAction("tableContiner");
-        })
-        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
-        	alert("FAIL");
-        });
+		debugger;
+		if ($("#createCategory").valid()) {
+			$.ajax({
+				type: 'POST',
+				url: '@Url.Action("Create", "Category")',
+				data: $("#createCategory").serialize()
+			})
+			.done(function (response) {
+				$("#tableContiner").html(response);
+				$("#actionContainer").html("");
+				focusAction("tableContiner");
+			})
+			.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+				swal({
+					title: "Warning",
+					text: "Please enter all required fields.",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+				});
+			});
+		}
+		else {
+			swal({
+				title: "JS Warning",
+				text: "Please enter all required fields.",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			});
+		}
 	});
 
 	$("#cancelBtn").click(function () {

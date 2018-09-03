@@ -1,0 +1,57 @@
+﻿@model ProductsWidgetViewModel
+
+@{
+	var defaultImageURL = "/Content/images/system/placeholder-image.png";
+}
+
+@if (Model != null && Model.Products != null)
+{
+	if (!Model.IsLatestProducts)
+	{
+		<ul class="flat-filter style-1 text-center max-width-682 clearfix">
+			<li class="active"><a href="#" data-filter="*">All Product</a></li>
+
+			@foreach (var category in Model.Products.Select(x => x.Category).ToList().Distinct())
+			{
+				<li><a href="#" data-filter=".@category.Name.ToLower()">For @category.Name</a></li>
+			}
+		</ul>
+		<div class="divider h54"></div>
+	}
+
+	<div class="product-content product-fourcolumn clearfix">
+		<ul class="product style2 isotope-product clearfix">
+
+			@foreach (var product in Model.Products)
+			{
+				var imageURL = string.IsNullOrEmpty(product.ImageURL) ? defaultImageURL : product.ImageURL;
+
+				<li class="product-item @product.Category.Name.ToLower()">
+					<div class="product-thumb clearfix">
+						<a href="@Url.Action("Details", "Product", new { ID = product.ID })" class="product-thumb">
+							<img src="@imageURL" alt="image" style="height: 250px;">
+						</a>
+						@if (Model.IsLatestProducts)
+						{
+							<span class="new">New</span>
+						}
+					</div>
+					<div class="product-info text-center clearfix">
+						<span class="product-title">
+							@product.Name
+						</span>
+						<div class="price">
+							<ins>
+								<span class="amount">$ @product.Price</span>
+						</ins>
+					</div>
+				</div>
+				<div class="add-to-cart text-center">
+					<a href="#">ADD TO CART</a>
+				</div>
+				<a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+			</li>
+			}
+		</ul>
+	</div>
+}

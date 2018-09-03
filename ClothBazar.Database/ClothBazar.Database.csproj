@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201808200855544_imageURLinProducts.Designer.cs">
       <DependentUpon>201808200855544_imageURLinProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808281347030_addedBasicValidations.cs" />
+    <Compile Include="Migrations\201808281347030_addedBasicValidations.Designer.cs">
+      <DependentUpon>201808281347030_addedBasicValidations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808200855544_imageURLinProducts.resx">
       <DependentUpon>201808200855544_imageURLinProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281347030_addedBasicValidations.resx">
+      <DependentUpon>201808281347030_addedBasicValidations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
