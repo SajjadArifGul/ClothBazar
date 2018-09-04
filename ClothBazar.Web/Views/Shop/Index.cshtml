@@ -1,0 +1,119 @@
+﻿@using ClothBazar.Web.Code
+@model ShopViewModel
+@{
+	ViewBag.Title = "Index";
+
+	var defaultImageURL = "/Content/images/system/placeholder-image.png";
+}
+
+<!-- Page title -->
+<div class="page-title parallax parallax1">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-title-heading">
+					<h1 class="title">Shop</h1>
+				</div><!-- /.page-title-heading -->
+			</div><!-- /.col-md-12 -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /.page-title -->
+
+<section class="flat-row main-shop shop-slidebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="sidebar slidebar-shop">
+					<div class="widget widget-search">
+						<form role="search" method="get" class="search-form" action="@Url.Action("Index", "Shop")">
+							<label>
+								<input type="search" class="search-field" placeholder="Search …" value="" name="searchTerm">
+							</label>
+							<input type="submit" class="search-submit" value="Search">
+						</form>
+					</div><!-- /.widget-search -->
+					<div class="widget widget-sort-by">
+						<h5 class="widget-title">
+							Sort By
+						</h5>
+						<ul>
+							<li><a href="@Url.Action("Index", "Shop", new { sortBy = (int)SortByEnums.Default })" class="@(Model.SortBy.HasValue ? Model.SortBy.Value == (int)SortByEnums.Default ? "active" : string.Empty : string.Empty)">Default - Newest</a></li>
+							<li><a href="@Url.Action("Index", "Shop", new { sortBy = (int)SortByEnums.Popularity })" class="@(Model.SortBy.HasValue ? Model.SortBy.Value == (int)SortByEnums.Popularity ? "active" : string.Empty : string.Empty)">Popularity</a></li>
+							<li><a href="@Url.Action("Index", "Shop", new { sortBy = (int)SortByEnums.PriceLowToHigh })" class="@(Model.SortBy.HasValue ? Model.SortBy.Value == (int)SortByEnums.PriceLowToHigh ? "active" : string.Empty : string.Empty)">Price: low to high</a></li>
+							<li><a href="@Url.Action("Index", "Shop", new { sortBy = (int)SortByEnums.PriceHighToLow })" class="@(Model.SortBy.HasValue ? Model.SortBy.Value == (int)SortByEnums.PriceHighToLow ? "active" : string.Empty : string.Empty)">Price: high to low</a></li>
+						</ul>
+					</div>
+					<div class="widget widget-price">
+						<h5 class="widget-title">Filter by price</h5>
+						<div class="price-filter">
+							<div id="slide-range"></div>
+							<p class="amount">
+								Price: <input type="text" id="amount" disabled="">
+							</p>
+						</div>
+					</div>
+					<div class="widget widget_tag">
+						<h5 class="widget-title">
+							Featured Categories
+						</h5>
+						<div class="tag-list">
+							@foreach (var category in Model.FeaturedCategories)
+							{
+								<a href="@Url.Action("Index", "Shop", new { categoryID = category.ID })">@category.Name</a>
+							}
+						</div>
+					</div><!-- /.widget -->
+				</div><!-- /.sidebar -->
+			</div><!-- /.col-md-3 -->
+			<div class="col-md-9">
+				<div class="filter-shop clearfix">
+					<p class="showing-product float-right">
+						Showing 1–12 of 56 Products
+					</p>
+				</div><!-- /.filte-shop -->
+				<div class="product-content product-threecolumn product-slidebar clearfix">
+					<ul class="product style2 sd1">
+
+					@foreach (var product in Model.Products)
+					{
+						var imageURL = string.IsNullOrEmpty(product.ImageURL) ? defaultImageURL : product.ImageURL;
+
+						<li class="product-item">
+							<div class="product-thumb clearfix">
+								<a href="#">
+									<img src="@imageURL" alt="image">
+								</a>
+							</div>
+							<div class="product-info clearfix">
+								<span class="product-title">
+									@product.Name
+								</span>
+								<div class="price">
+									<ins>
+										<span class="amount">$ @product.Price</span>
+									</ins>
+								</div>
+							</div>
+							<div class="add-to-cart text-center">
+								<a href="#">ADD TO CART</a>
+							</div>
+							<a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+						</li>
+					}
+					</ul><!-- /.product -->
+				</div><!-- /.product-content -->
+				<div class="product-pagination text-center clearfix">
+					<ul class="flat-pagination">
+						<li class="prev">
+							<a href="#"><i class="fa fa-angle-left"></i></a>
+						</li>
+						<li><a href="#">1</a></li>
+						<li class="active"><a href="#" title="">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+					</ul><!-- /.flat-pagination -->
+				</div>
+			</div><!-- /.col-md-9 -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /.flat-row -->
