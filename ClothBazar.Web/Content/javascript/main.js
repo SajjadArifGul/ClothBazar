@@ -377,22 +377,22 @@
       });
     };
 
-    var flatPrice = function() {
-        if( $().slider ) {
-            $( function() {
-                $( "#slide-range" ).slider({
-                  range: true,
-                  min: 0,
-                  max: 2900,
-                  values: [ 0, 2900 ],
-                  slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + ".00" + " - " + "$" + ui.values[ 1 ] + ".00" );
-                  }
-                });
-                $( "#amount" ).val( $( "#slide-range" ).slider( "values", 0 ) + "$" + " - " + $( "#slide-range" ).slider( "values", 1 ) + "$" );
-            });
-        }
-    };
+    //var flatPrice = function() {
+    //    if( $().slider ) {
+    //        $( function() {
+    //            $( "#slide-range" ).slider({
+    //              range: true,
+    //              min: 0,
+    //              max: 2900,
+    //              values: [ 0, 2900 ],
+    //              slide: function( event, ui ) {
+    //                $( "#amount" ).val( "$" + ui.values[ 0 ] + ".00" + " - " + "$" + ui.values[ 1 ] + ".00" );
+    //              }
+    //            });
+    //            $( "#amount" ).val( $( "#slide-range" ).slider( "values", 0 ) + "$" + " - " + $( "#slide-range" ).slider( "values", 1 ) + "$" );
+    //        });
+    //    }
+    //};
 
     var flatFilterBox = function(){
         $('.box-filter').hide();
@@ -819,7 +819,7 @@
       countDown();
       flatCounter();
       googleMap();
-      flatPrice();  
+      //flatPrice();  
       flatFilterBox(); 
       flatShopSearch();
       topSearch();

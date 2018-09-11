@@ -456,6 +456,7 @@
     <Content Include="Content\images\system\placeholder-image.png" />
     <Content Include="Content\images\tester.jpg" />
     <Content Include="Content\images\wordpress-version.png" />
+    <Content Include="Content\javascript\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -525,13 +526,13 @@
     <Content Include="Views\Widgets\Products.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\FilterProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\icon\" />
     <Folder Include="Content\images\about\" />
-    <Folder Include="Content\javascript\" />
     <Folder Include="Content\rev-slider\" />
     <Folder Include="Content\stylesheets\" />
   </ItemGroup>
