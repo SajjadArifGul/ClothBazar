@@ -63,7 +63,7 @@
 	</table>
 
 	<div>
-		@if (Model.Pager != null)
+		@if (Model.Pager != null && Model.Pager.TotalPages > 1)
 		{
 
 			if (Model.Pager.CurrentPage > 1)

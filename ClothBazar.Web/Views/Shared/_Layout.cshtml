@@ -61,9 +61,15 @@
 								<button type="submit" class="header-search-submit" title="Search">Search</button>
 							</form>
 						</li>
+					@if (User.Identity.IsAuthenticated)
+					{
 						<li class="box-login">
-							<a class="icon_login" href="#"></a>
+							<a class="icon_login" href="#">
+								@User.Identity.Name
+							</a>
 						</li>
+					}
+
 						<li class="box-cart nav-top-cart-wrapper">
 							<a class="icon_cart nav-cart-trigger active" href="#"><span>3</span></a>
 							<div class="nav-shop-cart">
