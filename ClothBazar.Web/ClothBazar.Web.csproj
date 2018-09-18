@@ -207,6 +207,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809111450537_InitialCreate.cs" />
+    <Compile Include="Migrations\201809111450537_InitialCreate.Designer.cs">
+      <DependentUpon>201809111450537_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809171445309_AddedNewPropertiesToUser.cs" />
+    <Compile Include="Migrations\201809171445309_AddedNewPropertiesToUser.Designer.cs">
+      <DependentUpon>201809171445309_AddedNewPropertiesToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -553,6 +562,14 @@
       <Project>{9500F205-6B7C-4FE3-8233-2C8FBFC6B551}</Project>
       <Name>ClothBazar.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201809111450537_InitialCreate.resx">
+      <DependentUpon>201809111450537_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809171445309_AddedNewPropertiesToUser.resx">
+      <DependentUpon>201809171445309_AddedNewPropertiesToUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

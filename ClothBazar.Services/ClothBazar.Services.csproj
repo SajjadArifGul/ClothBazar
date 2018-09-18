@@ -53,6 +53,7 @@
     <Compile Include="ProductsService.cs" />
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClothBazar.Database\ClothBazar.Database.csproj">

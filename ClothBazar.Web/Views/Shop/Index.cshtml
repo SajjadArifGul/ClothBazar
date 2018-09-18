@@ -111,6 +111,7 @@
 	});
 
 	function GetData(dUrl){
+		console.log("getdata in");
 		showLoader();
 
 		$.ajax({
@@ -121,14 +122,18 @@
 			}
 		})
         .done(function (response) {
+        	console.log("done");
         	$("#productsDiv").html(response);
         })
         .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	console.log("fail");
         	alert("FAIL");
         })
 		.always(function(){
+			console.log("always");
 			hideLoader();
 		});
+		console.log("getdata out");
 	}
 
 	function PriceRangeChange(){

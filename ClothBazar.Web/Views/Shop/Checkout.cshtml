@@ -1,28 +1,97 @@
 ﻿@model CheckoutViewModel
 
-@if(Model != null)
+@if (Model != null && Model.CartProducts != null && Model.CartProducts.Count > 0)
 {
-	if(Model.CartProducts != null && Model.CartProducts.Count > 0)
-	{
-		<div>
-			@foreach (var product in Model.CartProducts)
-			{
-				var productQuantity = Model.CartProductIDs.Where(productID => productID == product.ID).Count();
-				
-				<div>
-					Name: @product.Name - Price: @product.Price - Quantity: @productQuantity Total Price: @(product.Price * productQuantity)
-				</div>
-			}
-		</div>
+	var i = 1;
+	<section class="flat-row main-shop shop-slidebar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 order-md-2 mb-4">
+					<h4 class="d-flex justify-content-between align-items-center mb-3">
+						<span class="text-muted">Your cart</span>
+					</h4>
+					<ul class="list-group mb-3">
+						@foreach (var product in Model.CartProducts)
+						{
+							var productQuantity = Model.CartProductIDs.Where(productID => productID == product.ID).Count();
 
-		<div>
-			Total Bill : @Model.CartProducts.Sum(x=> x.Price * Model.CartProductIDs.Where(productID => productID == x.ID).Count())		
-		</div>
-	}
-	else
-	{
-		<div>
-			No Products in Cart.
-		</div>
-	}
+							<li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@product.ID">
+								<div>
+									<h6 class="my-0">@i - @product.Name - Qty: @productQuantity</h6>
+									<small class="text-muted">@(product.Description.Length > 100 ? product.Description.Substring(0, 99) : product.Description)</small>
+								</div>
+								<span class="text-muted">Unit Price: $ @product.Price - Total Price: @(productQuantity * product.Price)</span>
+							</li>
+
+							i++;
+						}
+
+						<li class="list-group-item d-flex justify-content-between">
+							<span>Total (USD)</span>
+							<strong>$ @Model.CartProducts.Sum(x => x.Price * Model.CartProductIDs.Where(productID => productID == x.ID).Count())</strong>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-8 order-md-1">
+					<h4 class="mb-3">Billing address</h4>
+					<form class="needs-validation" novalidate="">
+						<div class="row">
+							<div class="col-md-12 mb-3">
+								<label for="firstName">Name</label>
+								<input type="text" class="form-control" id="Name" placeholder="" value="@Model.User.Name" required="">
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<label for="email">Email <span class="text-muted">(Optional)</span></label>
+							<input type="email" class="form-control" id="Email" placeholder="you@example.com" value="@Model.User.Email">
+						</div>
+
+						<div class="mb-3">
+							<label for="address">Address</label>
+							<input type="text" class="form-control" id="address" placeholder="1234 Main St" required="" value="@Model.User.Address">
+						</div>
+
+						<hr class="mb-4">
+						<button id="placeOrderBtn" class="btn btn-primary btn-lg btn-block" type="button">Place Order!</button>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.container -->
+	</section>
+
+
+	<script>
+	$("#placeOrderBtn").click(function () {
+		$.ajax({
+			url: '@Url.Action("PlaceOrder", "Shop")',
+			data: {
+				productIDs: '@string.Join("-", Model.CartProductIDs)'
+			}
+		})
+        .done(function (response) {
+        	if(response.Success)
+        	{
+        		$.cookie('CartProducts', '', { path: '/' });
+        		updateCartProducts();
+
+        		swal("Done", "Your Order has been placed.", "success").then((value) => {
+        			window.location = '@Url.Action("Index", "Shop")';
+        		});;
+        	}
+        	else{
+        		swal("Failed", "Unable to place order.", "warning");
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+	</script>
+}
+else
+{
+	<div>
+		<b>No Products in Cart.</b>
+	</div>
 }

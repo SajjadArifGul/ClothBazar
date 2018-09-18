@@ -44,6 +44,8 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderItem.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

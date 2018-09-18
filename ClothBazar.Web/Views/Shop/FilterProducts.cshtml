@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<div class="add-to-cart text-center">
-					<a href="#">ADD TO CART</a>
+					<a class="productAddToCart" data-id="@product.ID">ADD TO CART</a>
 				</div>
 				<a href="#" class="like"><i class="fa fa-heart-o"></i></a>
 			</li>
@@ -79,4 +79,29 @@
 			GetData(url);
 		}
 	});
+
+	var products;
+	$(".productAddToCart").click(function () {
+		var existingCookieData = $.cookie('CartProducts');
+
+		if (existingCookieData != undefined && existingCookieData != "" && existingCookieData != null)
+		{
+			products = existingCookieData.split('-');
+		}
+		else {
+			products = [];
+		}
+
+		var productID = $(this).attr('data-id');
+
+		products.push(productID);
+
+		$.cookie('CartProducts', products.join('-'), { path: '/' });
+
+		updateCartProducts();
+
+		swal("Done", "Product Added to Cart!", "success");
+	});
+
 </script>
+
