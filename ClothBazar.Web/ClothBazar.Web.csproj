@@ -200,6 +200,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModels.cs" />
     <Compile Include="ViewModels\HomeViewModels.cs" />
+    <Compile Include="ViewModels\OrdersViewModels.cs" />
     <Compile Include="ViewModels\ProductViewModels.cs" />
     <Compile Include="ViewModels\SharedViewModels.cs" />
     <Compile Include="ViewModels\ShopViewModels.cs" />
@@ -536,6 +538,8 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\FilterProducts.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
